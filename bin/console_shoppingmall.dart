@@ -2,17 +2,19 @@ import 'dart:io'; // 사용자 입력을 받을 때 꼭 필요!
 
 void main() {
   ConsoleMeau meau = ConsoleMeau();
-  meau.startMeau();
-  String? input = stdin.readLineSync();
-  print("입력값: $input");
-  switch (input) {
-    case "1":
-      Shoppingmall item = Shoppingmall();
-      item.showProducts();
-      break;
-    case "2":
-      print("준비중입니다.");
-      break;
+  Shoppingmall item = Shoppingmall();
+  while (true) {
+    meau.startMeau();
+    String? input = stdin.readLineSync();
+    print("입력값: $input");
+    switch (input) {
+      case "1":
+        item.showProducts();
+        break;
+      case "2":
+        print("상품명을 입력해 주세요 !");
+        break;
+    }
   }
 }
 
