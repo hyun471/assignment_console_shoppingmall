@@ -1,10 +1,10 @@
-// List<String> products = ["셔츠", "원피스", "반팔티", "반바지", "양말"];
-// List<int> prices = [45000, 30000, 35000, 38000, 5000];
+import 'dart:io'; // 사용자 입력을 받을 때 꼭 필요!
 
-// class showProducts {}
 void main() {
   ConsoleMeau meau = ConsoleMeau();
   meau.startMeau();
+  String? input = stdin.readLineSync();
+  print("입력값: $input");
 }
 
 class ConsoleMeau {
