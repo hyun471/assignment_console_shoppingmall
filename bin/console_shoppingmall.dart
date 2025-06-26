@@ -1,9 +1,12 @@
-import 'dart:io'; // 사용자 입력을 받을 때 꼭 필요!
+import 'dart:io';
+import 'package:console_shoppingmall/consolemeau.dart';
+import 'package:console_shoppingmall/shoppingmall.dart';
 
 void main() {
   ConsoleMeau meau = ConsoleMeau();
   Shoppingmall item = Shoppingmall();
-  while (true) {
+  bool runningLoop = true;
+  while (runningLoop) {
     meau.startMeau();
     String? input = stdin.readLineSync();
     print("입력값: $input");
@@ -13,40 +16,26 @@ void main() {
         break;
       case "2":
         print("상품명을 입력해 주세요 !");
+        String? inputItem = stdin.readLineSync();
+        print("입력값: $inputItem");
+        var outputItem = item.products.any(
+          (Product) => Product.name == inputItem,
+        );
+        if (outputItem = true) {
+          print("상품의 개수를 입력해 주세요 !");
+          String? inputItemCount = stdin.readLineSync();
+          print("장바구니에 $outputItem가 $inputItemCount개 담겼습니다 !");
+        } else if (outputItem = false) {
+          print("입력값이 올바르지 않습니다 !");
+        }
+        break;
+      case "3":
+        print("아직 준비중입니다.");
+        break;
+      case "4":
+        print("이용해 주셔서 갑사합니다. 안녕히 가세요~");
+        runningLoop = false;
         break;
     }
-  }
-}
-
-class ConsoleMeau {
-  String consoleMeau =
-      "[1] 상품 목록 보기 / [2] 장바구니에 담기 / [3] 장바구니에 담긴 상품의 총 가격 보기 / [4] 프로그램 종료 ";
-  void startMeau() {
-    print(consoleMeau);
-  }
-}
-
-class Shoppingmall {
-  List<Product> products = [
-    Product("셔츠", 45000),
-    Product("원피스", 30000),
-    Product("반팔티", 35000),
-    Product("반바지", 38000),
-    Product("양말", 5000),
-  ];
-  void showProducts() {
-    for (var product in products) {
-      product.show();
-    }
-  }
-}
-
-class Product {
-  String name;
-  int price;
-  Product(this.name, this.price);
-
-  void show() {
-    print("$name / $price원");
   }
 }
