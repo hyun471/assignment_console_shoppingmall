@@ -16,10 +16,10 @@ void main() {
         item.showProducts();
         break;
       case "2":
-        addToCart();
+        addToCart(item);
         break;
       case "3":
-        showTotal();
+        showTotal(item);
         break;
       case "4":
         print("이용해 주셔서 갑사합니다. 안녕히 가세요~");
@@ -29,8 +29,7 @@ void main() {
   }
 }
 
-void addToCart() {
-  Shoppingmall item = Shoppingmall();
+void addToCart(Shoppingmall item) {
   print("상품명을 입력해 주세요 !");
   String? inputItem = stdin.readLineSync();
   print("입력값: $inputItem");
@@ -53,8 +52,18 @@ void addToCart() {
   }
 } // 장바구니 담기 기능
 
-void showTotal() {
-  Shoppingmall item = Shoppingmall();
+void showTotal(Shoppingmall item) {
   int totalPrice = 0;
-  totalPrice = item.cart.values * item.product
+  if (item.cart.isEmpty) {
+    print("장바구니에 담긴 상품이 없습니다.");
+    return;
+  } else {
+    for (var entry in item.cart.entries) {
+      Product product = entry.key;
+      int count = entry.value;
+      totalPrice += product.price * count;
+    }
+    print("장바구니에 담긴 상품의 총 가격은 $totalPrice원 입니다.");
+    return;
+  }
 } // 장바구니에 담긴 상품의 총 가격 보기 기능
