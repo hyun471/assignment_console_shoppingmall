@@ -19,7 +19,7 @@ void main() {
         addToCart();
         break;
       case "3":
-        print("아직 준비중입니다.");
+        showTotal();
         break;
       case "4":
         print("이용해 주셔서 갑사합니다. 안녕히 가세요~");
@@ -38,9 +38,13 @@ void addToCart() {
   if (itemCheck == true) {
     print("상품의 개수를 입력해 주세요 !");
     String? inputItemCount = stdin.readLineSync();
-    int _inputItemCount = int.parse(inputItemCount!);
-    if (_inputItemCount > 0) {
+    int selectItemCount = int.parse(inputItemCount!);
+    if (selectItemCount > 0) {
       print("장바구니에 추가되었습니다 !");
+      Product selectItem = item.products.firstWhere(
+        (product) => product.name == inputItem,
+      );
+      item.cart[selectItem] = selectItemCount;
     } else {
       print("상품의 개수는 1개 이상 입력해 주세요 !");
     }
@@ -48,3 +52,9 @@ void addToCart() {
     print("해당 상품은 존재하지 않습니다. 상품 목록을 확인해 주세요 !");
   }
 } // 장바구니 담기 기능
+
+void showTotal() {
+  Shoppingmall item = Shoppingmall();
+  int totalPrice = 0;
+  totalPrice = item.cart.values * item.product
+} // 장바구니에 담긴 상품의 총 가격 보기 기능

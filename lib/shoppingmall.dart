@@ -8,6 +8,8 @@ class Shoppingmall {
     Product("반바지", 38000),
     Product("양말", 5000),
   ];
+  Map<Product, int> cart = {};
+
   void showProducts() {
     for (var product in products) {
       product.show();
