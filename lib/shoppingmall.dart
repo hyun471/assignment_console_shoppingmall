@@ -15,4 +15,4 @@ class Shoppingmall {
       product.show();
     }
   }
-}
+} // 상품 리스트 및 상품 장바구니로 저장 기능

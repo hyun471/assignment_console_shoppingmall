@@ -6,4 +6,4 @@ class Product {
   void show() {
     print("$name / $price원");
   }
-}
+} // 상품 정의

@@ -31,7 +31,7 @@ void main() {
 
 void addToCart(Shoppingmall item) {
   print("상품명을 입력해 주세요 !");
-  String? inputItem = stdin.readLineSync();
+  String? inputItem = stdin.readLineSync()?.trim();
   print("입력값: $inputItem");
   bool? itemCheck = item.products.any((product) => product.name == inputItem);
   if (itemCheck == true) {
