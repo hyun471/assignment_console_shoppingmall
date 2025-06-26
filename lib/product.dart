@@ -1,9 +1,10 @@
 class Product {
   String name;
   int price;
-  Product(this.name, this.price);
+  int count;
+  Product(this.name, this.price, [this.count = 1]);
 
   void show() {
-    print("$name / $price원");
+    print("$name / ($price * $count)원");
   }
 }
