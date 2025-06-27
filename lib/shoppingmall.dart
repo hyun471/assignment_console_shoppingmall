@@ -59,4 +59,15 @@ class Shoppingmall {
       return;
     }
   } // 장바구니에 담긴 총 가격
+
+  // 장바구니 초기화를 위한 함수 추가
+  void clearCart() {
+    // 조건문을 사용하여 장바구니 담긴 상품이 있으면 초기화
+    if (cart.isNotEmpty) {
+      cart = {};
+      print("장바구니를 초기화 합니다.");
+    } else if (cart.isEmpty) {
+      print("이미 장바구니가 비어있습니다.");
+    }
+  }
 }
