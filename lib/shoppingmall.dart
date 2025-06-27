@@ -46,6 +46,7 @@ class Shoppingmall {
 
   void showTotal() {
     int totalPrice = 0;
+    List<String> addProduct = [];
     if (cart.isEmpty) {
       print("장바구니에 담긴 상품이 없습니다.");
       return;
@@ -54,8 +55,10 @@ class Shoppingmall {
         Product product = entry.key;
         int count = entry.value;
         totalPrice += product.price * count;
+        // 장바구니에 담긴 물품 출력
+        addProduct.add(product.name);
       }
-      print("장바구니에 담긴 상품의 총 가격은 $totalPrice원 입니다.");
+      print("장바구니에 담긴 상품 ${addProduct.join(', ')} 이며, 총 가격은 $totalPrice원 입니다.");
       return;
     }
   } // 장바구니에 담긴 총 가격
